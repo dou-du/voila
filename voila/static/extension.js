@@ -12,6 +12,7 @@ define(['jquery', 'base/js/namespace'], function($, Jupyter) {
     var open_voila = function() {
         Jupyter.notebook.save_notebook().then(function () {
             let voila_url = Jupyter.notebook.base_url + "voila/render/" + Jupyter.notebook.notebook_path;
+            Jupyter.notebook.kernel.execute("jupyter_notebook_url = '" + window.location + "'");
             window.open(voila_url)
         });
     }
