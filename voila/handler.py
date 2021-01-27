@@ -99,6 +99,8 @@ class VoilaHandler(JupyterHandler):
 
         if 'voila' in notebook.metadata:
             authors = notebook.metadata['voila'].get('authors')
+        else:
+            authors = None
 
         # render notebook to html
         resources = {
