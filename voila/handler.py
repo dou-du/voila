@@ -97,12 +97,16 @@ class VoilaHandler(JupyterHandler):
         if self.voila_configuration.allow_theme_override == 'YES':
             theme = self.get_argument("voila-theme", theme)
 
+        if 'voila' in notebook.metadata:
+            authors = notebook.metadata['voila'].get('authors')
+
         # render notebook to html
         resources = {
             'base_url': self.base_url,
             'nbextensions': nbextensions,
             'theme': theme,
             'template': template_name,
+            'authors': authors,
             'metadata': {
                 'name': notebook_name
             }
